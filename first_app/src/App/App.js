@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-//import './App.css';
 
-var data = [
-  {id:1,author:"First",text:"This is First"},
-  {id:2,author:"Second",text:"This is Second"},
-  {id:3,author:"Third",text:"This is Third"},
-];
-
-class App extends Component {
+class CommentBox extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="commentBox">
         <h1>Comments</h1> 
-          <CommentList data= {data}/>
+          <CommentList data= {this.props.data}/>
           <CommentForm/>
       </div>
     );
@@ -21,10 +14,22 @@ class App extends Component {
 
 class CommentList extends Component {
   render() {
-    return (
+    /* return (
       <div className="commentList">
         <Comment author="First">This is First Comment</Comment>
         <Comment author="Second">This is Second Comment</Comment>
+      </div>
+    ); */
+    var commentNodes = this.props.data.map(function(comment) {
+      return (
+        <Comment author={comment.author} key={comment.id}>
+          {comment.text}
+        </Comment>
+      );
+    });
+    return (
+      <div className="commentList">
+        {commentNodes}							
       </div>
     );
   }
@@ -55,4 +60,4 @@ class Comment extends Component {
   }
 }
 
-export default App;
+export default CommentBox;
