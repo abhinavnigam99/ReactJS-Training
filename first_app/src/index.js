@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import CommentBox from './App/App';
+import CommentBox from './CommentBox/CommentBox';
 import * as serviceWorker from './serviceWorker';
 
 var data = [
